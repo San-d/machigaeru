@@ -1,0 +1,74 @@
+{
+  "data": {
+    "code": [],
+    "user": [
+      {
+        "fname": "srwerwe",
+        "lname": "dfgfdgd",
+        "email": "a@b.com",
+        "profilepic": "some/url/here",
+        "mobNo": 123456,
+        "createdAt": "2015-08-27T19:28:13.042Z",
+        "updatedAt": "2015-08-27T19:28:13.042Z",
+        "id": 1
+      }
+    ]
+  },
+  "schema": {
+    "code": {
+      "mobNo": {
+        "type": "integer"
+      },
+      "verifictionCode": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "email": {
+        "type": "string"
+      },
+      "mobNo": {
+        "type": "integer"
+      },
+      "fname": {
+        "type": "string"
+      },
+      "lname": {
+        "type": "string"
+      },
+      "profilepic": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "code": {},
+    "user": {
+      "id": 1
+    }
+  }
+}

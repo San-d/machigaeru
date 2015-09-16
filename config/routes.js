@@ -10,9 +10,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
+  // Load Default layout 
+  '/': 'ViewController.loadDefaultView',
+  'get /chat': 'ViewController.loadChatWindowView',
   /* Users */
   'post /login' : 'UsersController.login',
   'post /create/user' : 'UsersController.create_user',

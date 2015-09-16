@@ -25,6 +25,7 @@ module.exports = {
             data.email = req.param('email');
             data.profilepic = req.param('profilepic');
             data.mobNo = req.param('mobNo');
+        console.log(data);
 
         if (data.email == undefined || data.email == '') {
             var e = { message: 'Email is required' };
