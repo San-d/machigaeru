@@ -1,4 +1,4 @@
-    <div class="container message-main-box">
+    <div class="container message-main-box" ng-controller="IndexController">
       <div class="chat-list-btn">
         <span>Menu</span><img src="images/reponsive-nav.png" alt="main navigation">
       </div>
@@ -37,14 +37,14 @@
                
         <div class="user-message-list-group">
                
-          <div class="user-message-row">
+          <div class="user-message-row" ng-click="getviewwithdetails('123456')">
             
             <div class="user-profile-pic">
               <img src="images/profile-pic1.jpg" alt="user prifile picture">
             </div>
                       
-            <div class="user-profile-content">
-              <h3><a href="/#!/chat">Adam Smith</a></h3>
+            <div class="user-profile-content" >
+              <h3>Adam Smith(123456)</h3>
               <p>kikme.adam</p>
             </div>
                       
@@ -54,14 +54,14 @@
             <div class="clearfix"></div>                    
           </div>
                   
-          <div class="user-message-row">
+          <div class="user-message-row"  ng-click="getviewwithdetails('1234567')">
                       
             <div class="user-profile-pic">
               <img src="images/profile-pic2.jpg" alt="user prifile picture">
             </div>
                       
             <div class="user-profile-content">
-              <h3>Brandon Thomas</h3>
+              <h3>Brandon Thomas(1234567)</h3>
               <p>B_Thomas1261</p>
             </div>
                       
@@ -101,6 +101,7 @@
       <!-- Angular UI -->
       <script type="text/javascript" src="js/lib/angular-bootstrap/ui-bootstrap.js"></script>
       <script type="text/javascript" src="js/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
 
       <!-- Application Init -->
       <script type="text/javascript" src="scripts/app.js"></script>

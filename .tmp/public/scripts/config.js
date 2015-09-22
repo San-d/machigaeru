@@ -9,7 +9,7 @@ angular.module('machigaeru').config(['$routeProvider',
             controller: 'IndexController',
             title: 'Machigaeru'
         }).
-        when('/chat', {
+        when('/chatwindow/:chatid', {
             templateUrl: '/templates/message_detail.html',
             controller: 'ChatController',
             title: 'Machigaeru'

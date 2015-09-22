@@ -1,5 +1,202 @@
 {
   "data": {
+    "chat": [
+      {
+        "fromUser": "123456",
+        "toUser": "12345678",
+        "message": "teyeyeyteye",
+        "createdAt": "2015-09-18T00:16:43.895Z",
+        "updatedAt": "2015-09-18T00:16:43.895Z",
+        "id": 1
+      },
+      {
+        "fromUser": "123456",
+        "toUser": "12345678",
+        "message": "teyeyeyteye",
+        "createdAt": "2015-09-18T00:16:50.026Z",
+        "updatedAt": "2015-09-18T00:16:50.026Z",
+        "id": 2
+      },
+      {
+        "fromUser": "123456",
+        "toUser": "12345678",
+        "message": "teyeyeyteye",
+        "createdAt": "2015-09-18T00:17:08.610Z",
+        "updatedAt": "2015-09-18T00:17:08.610Z",
+        "id": 3
+      },
+      {
+        "fromUser": "123456",
+        "toUser": "12345678",
+        "message": "teyeyeyteye",
+        "createdAt": "2015-09-18T00:17:27.214Z",
+        "updatedAt": "2015-09-18T00:17:27.214Z",
+        "id": 4
+      },
+      {
+        "fromUser": "123456",
+        "toUser": "12345678",
+        "message": "teyeyeyteye",
+        "createdAt": "2015-09-18T00:17:33.021Z",
+        "updatedAt": "2015-09-18T00:17:33.021Z",
+        "id": 5
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "hj"
+          }
+        ],
+        "id": 6,
+        "createdAt": "2015-09-20T21:53:47.446Z",
+        "updatedAt": "2015-09-20T21:53:47.446Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "uyuyfuf"
+          }
+        ],
+        "id": 7,
+        "createdAt": "2015-09-20T22:14:59.775Z",
+        "updatedAt": "2015-09-20T22:14:59.775Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "kg"
+          }
+        ],
+        "id": 8,
+        "createdAt": "2015-09-20T22:17:09.836Z",
+        "updatedAt": "2015-09-20T22:17:09.836Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "ghfhg"
+          }
+        ],
+        "id": 9,
+        "createdAt": "2015-09-20T22:18:50.206Z",
+        "updatedAt": "2015-09-20T22:18:50.206Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "kjgkjg"
+          }
+        ],
+        "id": 10,
+        "createdAt": "2015-09-20T22:18:55.934Z",
+        "updatedAt": "2015-09-20T22:18:55.934Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "jkh"
+          }
+        ],
+        "id": 11,
+        "createdAt": "2015-09-20T22:23:56.722Z",
+        "updatedAt": "2015-09-20T22:23:56.722Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "jhfhj"
+          }
+        ],
+        "id": 12,
+        "createdAt": "2015-09-20T22:26:18.457Z",
+        "updatedAt": "2015-09-20T22:26:18.457Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "erw"
+          }
+        ],
+        "id": 13,
+        "createdAt": "2015-09-20T22:35:44.883Z",
+        "updatedAt": "2015-09-20T22:35:44.883Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "dsf"
+          }
+        ],
+        "id": 14,
+        "createdAt": "2015-09-20T22:39:14.484Z",
+        "updatedAt": "2015-09-20T22:39:14.484Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "oiy"
+          }
+        ],
+        "id": 15,
+        "createdAt": "2015-09-20T22:52:54.008Z",
+        "updatedAt": "2015-09-20T22:52:54.008Z"
+      },
+      {
+        "loggedUser": "12345678",
+        "toUser": "123456",
+        "chatArray": [
+          {
+            "senderUser": "12345678",
+            "receiverUser": "123456",
+            "message": "df"
+          }
+        ],
+        "id": 16,
+        "createdAt": "2015-09-20T22:53:25.167Z",
+        "updatedAt": "2015-09-20T22:53:25.167Z"
+      }
+    ],
+    "chatuserlist": [],
     "code": [],
     "user": [
       {
@@ -11,10 +208,73 @@
         "createdAt": "2015-08-27T19:28:13.042Z",
         "updatedAt": "2015-08-27T19:28:13.042Z",
         "id": 1
+      },
+      {
+        "fname": "srwerwe",
+        "lname": "dfgfdgd",
+        "email": "a@bc.com",
+        "profilepic": "some/url/here",
+        "mobNo": 1234567,
+        "createdAt": "2015-09-17T22:05:00.804Z",
+        "updatedAt": "2015-09-17T22:05:00.804Z",
+        "id": 2
+      },
+      {
+        "fname": "San",
+        "lname": "D",
+        "email": "a@bcd.com",
+        "profilepic": "some/url/here",
+        "mobNo": 12345678,
+        "createdAt": "2015-09-17T22:54:01.172Z",
+        "updatedAt": "2015-09-17T22:54:01.172Z",
+        "id": 3
       }
     ]
   },
   "schema": {
+    "chat": {
+      "loggedUser": {
+        "type": "string"
+      },
+      "toUser": {
+        "type": "string"
+      },
+      "chatArray": {
+        "type": "array"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "chatuserlist": {
+      "loggedUser": {
+        "type": "string"
+      },
+      "friendArray": {
+        "type": "array"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
     "code": {
       "mobNo": {
         "type": "integer"
@@ -68,7 +328,11 @@
   "counters": {
     "code": {},
     "user": {
-      "id": 1
-    }
+      "id": 3
+    },
+    "chat": {
+      "id": 16
+    },
+    "chatuserlist": {}
   }
 }

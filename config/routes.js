@@ -12,7 +12,7 @@ module.exports.routes = {
 
   // Load Default layout 
   '/': 'ViewController.loadDefaultView',
-  'get /chat': 'ViewController.loadChatWindowView',
+  'get /chatwindow': 'ViewController.loadChatWindowView',
   /* Users */
   'post /login' : 'UsersController.login',
   'post /create/user' : 'UsersController.create_user',
