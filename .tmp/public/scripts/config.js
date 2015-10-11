@@ -5,8 +5,15 @@ angular.module('machigaeru').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/', {
-            templateUrl: '/templates/message_list.html',
             controller: 'IndexController',
+            title: 'Machigaeru',
+            resolve: {
+                factory: isLoggedIn
+            }
+        }).
+        when('/messagecenter', {
+            templateUrl: '/templates/index.html',
+            controller: 'ChatController',
             title: 'Machigaeru'
         }).
         when('/chatwindow/:chatid', {
@@ -27,22 +34,17 @@ angular.module('machigaeru').config(['$locationProvider',
     }
 ]);
 
-// var isLoggedIn = function ($q, $cookies, $location) {
-//     console.log('*** resolving ****' + $cookies.user);
-//     console.log('*** prof status ****' + $cookies.profileStatus);
-//     var deferred = $q.defer();
-//     if ($cookies.user === undefined) {
-//         deferred.reject();
-//         $window.location.href = '/#!/login';
-//     } else {
-//         if ($cookies.profileStatus === 'approved') {
-//             return true;
-//         } else {
-//             $location.path("/selectplan");
-//         }
-//     }
-//     return deferred.promise;
-// }
+var isLoggedIn = function ($q, $cookies, $location) {
+    console.log('*** resolving ****' + $cookies.loggedUser);
+    var deferred = $q.defer();
+    if ($cookies.loggedUser === undefined) {
+        deferred.reject();
+        $window.location.href = '/#!/';
+    } else {
+        $location.path("/messagecenter");
+    }
+    return deferred.promise;
+}
 
 // angular.module('machigaeru').run(['$location', '$rootScope', function($location, $rootScope) {
 //     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {

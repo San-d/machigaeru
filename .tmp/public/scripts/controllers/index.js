@@ -1,74 +1,110 @@
 'use strict';
 
-
-// angular.module('machigaeru').controller('navigation', ['$scope', '$http', '$cookies', '$window', function ($scope, $http, $cookies, $window) {
-//     if ($cookies.user === undefined)
-//          $window.location.href = '/#!/login';
-
-//     $scope.logout = function() {
-//         $http.get('/logout').success(function() {
-//             $cookies.user = undefined;
-//             $window.location.href = '/';
-//         });
-//     };
-// }]);
-
 angular.module('machigaeru').controller('IndexController', [ '$scope', '$http', '$cookies', '$window','$location', function ($scope, $http, $cookies, $window, $location) {
+    if($cookies.loggedUser){
+        $scope.isloggedin = true;
+    } else {
+        $scope.isloggedin = false;
+    }
+
+    $scope.logout = function() {
+        $http.get('/logout').success(function() {
+            $cookies.loggedUser = undefined;
+            $window.location.href = '/#!/';
+        });
+    };
+
     $scope.getviewwithdetails = function(userid){
         $location.url('/chatwindow/'+userid);
+    }
+
+    $scope.logintosite = function(phno){
+        console.log(phno);
+        var data = {
+            mobNo: phno
+        };
+        console.log(data);
+        $http.post('/login', data).success(function(resData){
+            if(resData.success == true){
+                $cookies.loggedUser = resData.user;
+                $scope.isloggedin = true;
+                console.log($cookies.loggedUser);
+                $location.url("/messagecenter");
+            } else {
+                $scope.isloggedin = false;
+                $location.url("/#!/");
+            }
+        });
     }
 }]);
 
 
 angular.module('machigaeru').controller('ChatController', ['$scope', '$http','$routeParams', '$log', '$cookies', '$window','$location', function ($scope, $http,$routeParams, $log, $cookies, $window, $location) {
-    console.log($routeParams.chatid);
-    var socket = io.connect();
-    var senderUser = '12345678',
-        receiverUser = $routeParams.chatid;
+    var onlineuserlist = [];
+    $scope.userlist = [];
 
-    $scope.chatList = [];
-
-    $scope.getAllchat = function(){
-
-        io.socket.get('/chat/savechatdata', function (resData) {
-            $scope.chatList = resData.chatdata[0].chatArray;
-        });
-    };
-
-    $scope.getAllchat();
-
-    io.socket.on('chat', function (msg) {
-
-        // Let's see what the server has to say...
-        switch(msg.verb) {
-
-            case 'created':
-                console.log("msg" + JSON.stringify(msg, null, 4));
-                $scope.chatList.push(msg.data);
-                $scope.$digest();
-                break;
-
-            default: return; // ignore any unrecognized messages
+    $http.get('/loggeduserlist').success(function(datalist){
+        if(datalist.status){
+            for(var i=0; i <= datalist.userList.length-1; i++){
+                console.log("datalist.userList[i].id "+datalist.userList[i].id);
+                console.log("$cookies.loggedUser.id "+$cookies.loggedUser);
+                if(datalist.userList[i].mobNo != $cookies.loggedUser[0].mobNo){
+                    $scope.userlist.push(datalist.userList[i]);
+                }
+            }
+            $scope.userlist = datalist.userList;
         }
     });
 
-    $scope.sendMessage = function(){
-        if($scope.message){
-            var data = {
-                loggedUser : senderUser,
-                toUser: receiverUser,
-                chatArray: [{
-                    senderUser: senderUser,
-                    receiverUser: receiverUser,
-                    message: $scope.message
-                }]
-            };
+    // console.log($routeParams.chatid);
+    // var socket = io.connect();
+    // var senderUser = '12345678',
+    //     receiverUser = $routeParams.chatid;
 
-            io.socket.post('/chat/savechatdata',data);
+    // $scope.chatList = [];
 
-            $scope.message = "";
+    // $scope.getAllchat = function(){
 
-            console.log(JSON.stringify(data, null, 4));
-        }
-    }
+    //     io.socket.get('/chat/savechatdata/12345678/'+receiverUser, function (resData) {
+    //         $scope.chatList = resData.chatdata[0].chatArray;
+    //         console.log("cas "+JSON.stringify($scope.chatList, null, 4));
+    //     });
+    // };
+
+    // $scope.getAllchat();
+
+    // io.socket.on('chat', function (msg) {
+
+    //     // Let's see what the server has to say...
+    //     switch(msg.verb) {
+
+    //         case 'created':
+    //             console.log("msg" + JSON.stringify(msg, null, 4));
+    //             $scope.chatList.push(msg.data);
+    //             $scope.$digest();
+    //             break;
+
+    //         default: return; // ignore any unrecognized messages
+    //     }
+    // });
+
+    // $scope.sendMessage = function(){
+    //     if($scope.message){
+    //         var data = {
+    //             loggedUser : senderUser,
+    //             toUser: receiverUser,
+    //             chatArray: [{
+    //                 senderUser: senderUser,
+    //                 receiverUser: receiverUser,
+    //                 message: $scope.message
+    //             }]
+    //         };
+
+    //         io.socket.post('/chat/savechatdata',data);
+
+    //         $scope.message = "";
+
+    //         console.log(JSON.stringify(data, null, 4));
+    //     }
+    // }
 }]);

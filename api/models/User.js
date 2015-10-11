@@ -12,6 +12,7 @@ module.exports = {
     mobNo: {type: 'integer'},
     fname: {type: 'string'},
     lname: {type: 'string'},
-    profilepic: {type: 'string'}
+    profilepic: {type: 'string'},
+    loggedIn: {type: 'boolean'}
   }
 };

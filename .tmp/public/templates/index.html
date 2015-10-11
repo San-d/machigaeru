@@ -1,22 +1,80 @@
-
-    <div class="container main-box">
-        	 
-        <div class="header-box">
-            <div class="logo-box">
-                <img src="images/bar-code.jpg" alt="machigaeru">
-            </div>
-            
-            <div class="logo-content-box">
-                <h1 class="logo-title">Machigaeru Web</h1>
-                <h3 class="logo-subtitle">Use Machigaeru on your phone to scan the code</h3>
-                <p class="logo-text1"> <input type="checkbox" checked/>Keep me signed in</p>
-                <p class="logo-text2">To reduce data usage, connect your phone to Wi-Fi</p>
-            </div> 
-            <div class="clearfix"></div>
+<div class="container message-main-box" ng-controller="IndexController">
+      <div class="chat-list-btn">
+        <span>Menu</span><img src="images/reponsive-nav.png" alt="main navigation">
+      </div>
+      
+      <div class="message-list-box">
+              
+        <div class="user-admin-box">
+          <div class="user-admin-profile">
+            <img src="images/myprofile-pic.jpg" alt="User Profile">                
+          </div>
+                  
+          <ul class="user-admin-icon-group">
+            <li><a href="#"><img src="images/message-icon.png" alt="message icon"></a></li>
+            <li><a href="#"><img src="images/message-nav-icon.png" alt="navigation icon"></a></li>
+          </ul>
+          <div class="clearfix"></div>               
         </div>
-        
-        <div class="home-banner">
-        	<img src="images/home-banner.png" alt="home banner">
-        </div>             
-                
-    </div>
+              
+        <div class="notification-box">
+                  
+          <div class="notification-icon-lt">
+            <img src="images/bell-icon.png" alt="notification icon">
+          </div>
+                  
+          <div class="notification-content-rt">
+            <h4>Get Notified of New massage</h4>
+            <p>Turn on desktop notifications</p>
+          </div>
+          <div class="clearfix"></div> 
+        </div>
+              
+        <div class="search-box">
+          <input type="text" placeholder="Search or start new chat"/>
+          <button type="submit" class="search-btn"><img src="images/search-icon.png" alt="search icon"></button>
+        </div>
+               
+        <div class="user-message-list-group">
+               
+          <div class="user-message-row" ng-repeat="users in userlist" ng-click="getviewwithdetails(users.mobNo)">
+            
+            <div class="user-profile-pic">
+              <img src="images/profile-pic1.jpg" alt="user prifile picture">
+            </div>
+                      
+            <div class="user-profile-content" >
+              <h3>{{ users.fname }} {{ users.lname }}</h3>
+              <p>kikme.adam</p>
+            </div>
+                      
+            <div class="user-profile-time">
+              <p class="msg-time">11:38</p>
+            </div>
+            <div class="clearfix"></div>                    
+          </div>
+                  
+          <div class="clearfix"></div>
+        </div>
+               
+        <div class="user-btn-group">
+          <ul>
+            <li><a href="#">Recent</a></li>
+            <li><a href="#">Cantacts</a></li>
+          </ul>
+          <div class="clearfix"></div>      
+        </div>            
+         
+      </div>
+      <div class="message-group-box">     
+  <div class="showcase-banner">
+    <img src="images/message-img.jpg" alt="sowcase mobile">             
+  </div>   
+
+  <div class="showcase-banner-content">
+    <h1>Keep your phone connected</h1>
+    <p>Machigaeru web connects to your phone to sync messages. To reduce data usage, connect your phone to Wi-Fi.</p>
+  </div>
+</div>
+
+  </div>
