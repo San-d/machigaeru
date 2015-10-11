@@ -12,11 +12,12 @@ module.exports = {
             console.log(JSON.stringify(user, null, 4));
             if (user.length) {
                 User.update({id: user[0].id}, {loggedIn: true}, function(err, noerr){
-                    return res.json({ success: 1, status: 1, user: user[0] });
+                    return res.json({ success: 1, status: 1, user: user[0].mobNo });
                 })
             }
             else {
-                res.json({ error: 'User not found', status: 0 }, 200);
+                // res.json({ error: 'User not found', status: 0 }, 200);
+                res.status(200).json({ error: 'User not found', status: 0 });
             }
         });
     },
@@ -79,11 +80,13 @@ module.exports = {
                     return res.json({ status: 1, profileData: userData });
                 }
                 else {
-                    res.json({ error: 'User not found', status: 0 }, 200);
+                    // res.json({ error: 'User not found', status: 0 }, 200);
+                    res.status(200).json({ error: 'User not found', status: 0 });
                 }
             });
         } else {
-            res.json({ error: 'Please insert a valid mobile number', status: 0 }, 200);
+            // res.json({ error: 'Please insert a valid mobile number', status: 0 }, 200);
+            res.status(200).json({ error: 'Please insert a valid mobile number', status: 0 });
         }
     },
     find_user: function (req, res) {
@@ -93,11 +96,13 @@ module.exports = {
                     return res.json({ success: 'User found', status: 1});
                 }
                 else {
-                    res.json({ error: 'User not found', status: 0 }, 200);
+                    // res.json({ error: 'User not found', status: 0 }, 200);
+                    res.status(200).json({ error: 'User not found', status: 0 });
                 }
             });
         } else {
-            res.json({ error: 'Please insert a valid mobile number', status: 0 }, 200);
+            // res.json({ error: 'Please insert a valid mobile number', status: 0 }, 200);
+            res.status(200).json({ error: 'Please insert a valid mobile number', status: 0 });
         }
     },
     create_verification_code: function (req, res) {

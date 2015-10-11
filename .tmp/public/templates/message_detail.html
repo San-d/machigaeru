@@ -1,56 +1,45 @@
+<div class="message-chat-box">
+    <div class="chat-header">
+        <div class="chat-profile-group">
+            <div class="chat-profile">
+                <img src="images/profile-pic3.jpg" alt="chat profile picture">
+            </div>
+            <div class="chat-user">
+                <h3>Alexis Miller</h3>
+            </div>
+        </div>
+        <div class="chat-navigation">
+            <ul>
+                <li><a href="#"><img src="images/attach-icon.png" alt="attach icon"></a></li>
+                <li><a href="#"><img src="images/message-nav-icon.png" alt="nav icon"></a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
 
-      
-        <div class="message-chat-box">
-        
-        	<div class="chat-header">
-            		
-                    <div class="chat-profile-group">
-                    	<div class="chat-profile">
-                        	<img src="images/profile-pic3.jpg" alt="chat profile picture">
-                        </div>
-                        <div class="chat-user">
-                        	<h3>Alexis Miller</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="chat-navigation">
-                    	<ul>
-                        	<li><a href="#"><img src="images/attach-icon.png" alt="attach icon"></a></li>
-                            <li><a href="#"><img src="images/message-nav-icon.png" alt="nav icon"></a></li>
-                        </ul>                     
-                    </div>
-                    <div class="clearfix"></div>                
+    <div class="chat-body" ng-repeat="chats in chatList">
+        <div class="chat-box1">
+            <div class="arrow-up"></div>
+            {{ chats.message }}
+        </div>
+        <div class="chat-box2" ng-if="chats.loggedUser == senderUser">
+            <div class="arrow-down"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    
+    <div class="chat-footer">
+        <form action="" method="post" ng-submit="sendMessage()">
+            <div class="footer-chat-textarea">
+                <input type="text" placeholder="Type..." ng-model="message" />
+                <div class="smiley-box"><img src="images/smiley-icon.png" alt="smiley"></div>
+                <input type="submit" id="submit" value="Submit" />
             </div>
-            
-            <!-- <div class="chat-body" ng-repeat="chats in chatList"> -->
-            	<!-- <div class="chat-box1">
-                	<div class="arrow-up"></div>
-                    {{ chats.message }}
-                </div> -->
-            		
-                <!-- <div class="chat-box2" ng-if="chats.loggedUser == senderUser">
-                    <div class="arrow-down"></div>
-                </div>  -->
-                
-            <!--        <div class="clearfix"></div> 
-            </div> -->
-            
-            
-            <div class="chat-footer">                   
-                <form action="" method="post" ng-submit="sendMessage()">
-                	<div class="footer-chat-textarea">
-                    	<input type="text" placeholder="Type..." ng-model="message" />
-	                    <div class="smiley-box"><img src="images/smiley-icon.png" alt="smiley"></div>
-                        <input type="submit" id="submit" value="Submit" />
-                    </div>
-                </form>
-            	
-                <ul class="footer-navigation">
-                	<li><a href="#"><img src="images/camera-icon.png" alt="camera icon"></a></li>
-                    <li><a href="#"><img src="images/voice-icon.png" alt="voice icon"></a></li>
-                    <li><a href="#"><img src="images/video-icon.png" alt="video icon"></a></li>
-                </ul>
-            
-            </div>
-       
-       </div>
+        </form>
+        <ul class="footer-navigation">
+            <li><a href="#"><img src="images/camera-icon.png" alt="camera icon"></a></li>
+            <li><a href="#"><img src="images/voice-icon.png" alt="voice icon"></a></li>
+            <li><a href="#"><img src="images/video-icon.png" alt="video icon"></a></li>
+        </ul>
+    </div>
+</div>

@@ -2,7 +2,7 @@
 
 //Setting up route
 angular.module('machigaeru').config(['$routeProvider',
-    function($routeProvider) {
+    function($routeProvider, $window) {
         $routeProvider.
         when('/', {
             controller: 'IndexController',
@@ -34,7 +34,7 @@ angular.module('machigaeru').config(['$locationProvider',
     }
 ]);
 
-var isLoggedIn = function ($q, $cookies, $location) {
+var isLoggedIn = function ($q, $cookies, $location, $window) {
     console.log('*** resolving ****' + $cookies.loggedUser);
     var deferred = $q.defer();
     if ($cookies.loggedUser === undefined) {
