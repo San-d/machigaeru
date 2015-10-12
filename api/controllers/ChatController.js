@@ -19,7 +19,7 @@ module.exports = {
             // This is the message from connected client
             // So add new conversation
             // Chat.drop();
-            Chat.find({"loggedUser": "123456", "toUser": "1234567"},function (err, chatdetails) {
+            Chat.find({"loggedUser": data.loggedUser, "toUser": data.toUser},function (err, chatdetails) {
                 /*if(chatdetails.length > 0){
                     chatdetails[0].chatArray.push(data.chatArray[0]);
                     Chat.update({ id: 23 }, {chatArray : chatdetails[0].chatArray}, function(error,data_from_client){
@@ -34,7 +34,7 @@ module.exports = {
                 Chat.create(data).exec(function(error, data_from_client){
                     console.log(JSON.stringify(data_from_client, null, 4));
                     // Chat.message(req.param('room'), {room:{id:req.param('room')}, from: user, msg: req.param('msg')}, req.socket);
-                    Chat.message(data_from_client.toUser, {sender: data_from_client.loggedUser, message : data_from_client.chatArray[0].message});
+                    // Chat.message(data_from_client.toUser, {sender: data_from_client.loggedUser, message : data_from_client.chatArray[0].message});
                     Chat.publishCreate({id: data_from_client.id, message : data_from_client.chatArray[0].message , user:data_from_client.loggedUser});
                 });
             });

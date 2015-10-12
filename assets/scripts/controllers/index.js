@@ -68,7 +68,7 @@ angular.module('machigaeru').controller('ChatController', ['$scope', '$http','$r
     $scope.getAllchat = function() {
         io.socket.get('/chat/savechatdata', function (resData) {
             console.log(resData);
-            if(resData) {
+            if(resData.chatdata[0]) {
                 $scope.chatList = resData.chatdata[0].chatArray;
                 console.log("cas "+JSON.stringify($scope.chatList, null, 4));
             }

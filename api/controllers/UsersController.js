@@ -12,6 +12,7 @@ module.exports = {
             console.log(JSON.stringify(user, null, 4));
             if (user.length) {
                 User.update({id: user[0].id}, {loggedIn: true}, function(err, noerr){
+                    req.session.loggedinUser = user[0];
                     return res.json({ success: 1, status: 1, user: user[0].mobNo });
                 })
             }
