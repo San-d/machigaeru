@@ -20,7 +20,7 @@ module.exports = {
 
             // This is the message from connected client
             // So add new conversation
-            Chat.drop();
+            // Chat.drop();
             Chat.find({"loggedUser": data.loggedUser, "toUser": data.toUser},function (err, chatdetails) {
                 console.log("chatdetails "+JSON.stringify(chatdetails, null, 4));
                 if(chatdetails.length > 0){
@@ -51,7 +51,7 @@ module.exports = {
                 }
             });
         } else if(req.isSocket  && req.method === 'GET'){
-            Chat.drop();
+            // Chat.drop();
             // subscribe client to model changes 
             Chat.watch(req.socket);
             console.log( 'User subscribed to ' + req.socket.id );
