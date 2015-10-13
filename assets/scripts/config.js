@@ -16,7 +16,7 @@ angular.module('machigaeru').config(['$routeProvider',
             controller: 'ChatController',
             title: 'Machigaeru'
         }).
-        when('/chatwindow/:chatid', {
+        when('/chatwindow/:senderid/:receiverid', {
             templateUrl: '/templates/message_detail.html',
             controller: 'ChatController',
             title: 'Machigaeru'

@@ -21,5 +21,6 @@ module.exports.routes = {
   'post /create/verificationcode' : 'UsersController.create_verification_code',
   'post /verify/mobileno' : 'UsersController.verify_code',
 
-  'get /loggeduserlist' : 'UsersController.logged_user_list'
+  'get /loggeduserlist' : 'UsersController.logged_user_list',
+  'post /chat/setconversation' : 'ChatController.setConversation'
 };

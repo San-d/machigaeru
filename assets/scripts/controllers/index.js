@@ -15,7 +15,7 @@ angular.module('machigaeru').controller('IndexController', [ '$scope', '$http', 
     };
 
     $scope.getviewwithdetails = function(userid){
-        $location.url('/chatwindow/'+userid);
+        $location.url('/chatwindow/'+$cookies.loggedUser+'/'+userid);
     }
 
     $scope.logintosite = function(phno){
@@ -56,17 +56,34 @@ angular.module('machigaeru').controller('ChatController', ['$scope', '$http','$r
             $scope.userlist = datalist.userList;
         }
     });
-
-    console.log($routeParams.chatid);
+    console.log($routeParams.receiverid);
     var socket = io.connect();
     var senderUser = $cookies.loggedUser,
-        receiverUser = $routeParams.chatid;
+        receiverUser = $routeParams.receiverid;
+    if(receiverUser){
+        var data = {
+            senderUser : senderUser,
+            receiverUser : receiverUser
+        };
+
+        $http.post('/chat/setconversation', data , function (resData) {
+            console.log("resData "+resData);
+        });
+    }
 
     console.log($cookies);
     $scope.chatList = [];
 
     $scope.getAllchat = function() {
         io.socket.get('/chat/savechatdata', function (resData) {
+            console.log(resData);
+            if(resData.chatdata[0]) {
+                $scope.chatList = resData.chatdata[0].chatArray;
+                console.log("cas "+JSON.stringify($scope.chatList, null, 4));
+            }
+        });
+
+        $http.get('/chat/savechatdata', function (resData) {
             console.log(resData);
             if(resData.chatdata[0]) {
                 $scope.chatList = resData.chatdata[0].chatArray;

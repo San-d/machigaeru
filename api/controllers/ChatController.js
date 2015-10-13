@@ -5,8 +5,10 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 // Load Reqired Node Modules
-module.exports = {
+var loggedinUser = "",
+    receiverUser = "";
 
+module.exports = {
     saveChatData: function (req, res) {
         console.log("I am here");
         var data = req.params.all();
@@ -20,50 +22,65 @@ module.exports = {
             // So add new conversation
             // Chat.drop();
             Chat.find({"loggedUser": data.loggedUser, "toUser": data.toUser},function (err, chatdetails) {
-                /*if(chatdetails.length > 0){
+                console.log("chatdetails "+JSON.stringify(chatdetails, null, 4));
+                if(chatdetails.length > 0){
                     chatdetails[0].chatArray.push(data.chatArray[0]);
-                    Chat.update({ id: 23 }, {chatArray : chatdetails[0].chatArray}, function(error,data_from_client){
+                    Chat.update({ id: chatdetails[0].id }, {chatArray : chatdetails[0].chatArray}, function(error,data_from_client){
+                        console.log(JSON.stringify(data_from_client, null, 4));
+                        Chat.publishCreate({id: data_from_client[0].id, message : data.chatArray[0].message , user: data.loggedUser});
                         console.log("data uploaded successfully!!");
                     });
                 } else {
-                    Chat.create(data).exec(function(error,data_from_client){
-                        console.log(JSON.stringify(data_from_client, null, 4));
-                        Chat.publishCreate({id: data_from_client.id, message : data_from_client.message , user:data_from_client.fromUser});
+                    Chat.find({"loggedUser": data.toUser, "toUser": data.loggedUser},function (err, chatData) {
+                        console.log("chatData "+JSON.stringify(chatData, null, 4));
+                        if(chatData.length >0){
+                            chatData[0].chatArray.push(data.chatArray[0]);
+                            Chat.update({ id: chatData[0].id }, {chatArray : chatData[0].chatArray}, function(error,data_from_client){
+                                console.log(JSON.stringify(data_from_client, null, 4));
+                                Chat.publishCreate({id: data_from_client[0].id, message : data.chatArray[0].message , user: data.toUser});
+                                console.log("data uploaded successfully!!");
+                            });
+                        } else {
+                            Chat.create(data).exec(function(error,data_from_client){
+                                console.log(JSON.stringify(data_from_client, null, 4));
+                                Chat.publishCreate({id: data_from_client.id, message : data_from_client.chatArray[0].message , user:data_from_client.loggedUser});
+                                console.log("data created successfully!!");
+                            });
+                        }
                     });
-                }*/
-                Chat.create(data).exec(function(error, data_from_client){
-                    console.log(JSON.stringify(data_from_client, null, 4));
-                    // Chat.message(req.param('room'), {room:{id:req.param('room')}, from: user, msg: req.param('msg')}, req.socket);
-                    // Chat.message(data_from_client.toUser, {sender: data_from_client.loggedUser, message : data_from_client.chatArray[0].message});
-                    Chat.publishCreate({id: data_from_client.id, message : data_from_client.chatArray[0].message , user:data_from_client.loggedUser});
-                });
+                }
             });
-        } else if(req.isSocket){
+        } else if(req.isSocket  && req.method === 'GET'){
+            // Chat.drop();
             // subscribe client to model changes 
             Chat.watch(req.socket);
             console.log( 'User subscribed to ' + req.socket.id );
-            Chat.find({"loggedUser": "123456", "toUser": "1234567"},function (err, chatdetails) {
-                console.log(JSON.stringify(chatdetails, null, 4));
-                if (chatdetails.length) {
-                    return res.json({ success: 1, status: 1, chatdata: chatdetails });
-                } else {
-                    return res.json({ success: 1, status: 1, chatdata: {msg: 'No previous chat is there!'} });
-                }
-            });
+            console.log("Again loggedUser "+ loggedinUser, "toUser "+ receiverUser);
+            if(loggedinUser && receiverUser){
+                Chat.find({"loggedUser": loggedinUser, "toUser": receiverUser},function (err, chatdetails) {
+                    console.log(JSON.stringify(chatdetails, null, 4));
+                    if (chatdetails.length > 0) {
+                        return res.json({ success: 1, status: 1, chatdata: chatdetails });
+                    } else {
+                        Chat.find({"loggedUser": receiverUser, "toUser": loggedinUser},function (err, chatData) {
+                            console.log("chatData "+JSON.stringify(chatData, null, 4));
+                            if(chatData.length >0){
+                               return res.json({ success: 1, status: 1, chatdata: chatData }); 
+                            } else {
+                                return res.json({ success: 1, status: 1, chatdata: {msg: 'No previous chat is there!'} });
+                            }
+                        });
+                    }
+                });
+            }
         }
     },
 
-    loadChatData: function (req, res) {
-        console.log("I am here in load chat data");
+    setConversation: function (req, res) {
+        console.log("I am here in setConversation ");
         var data = req.params.all();
-        Chat.find({"loggedUser": data.loggedUser, "toUser": data.toUser},function (err, chatdetails) {
-                console.log(JSON.stringify(chatdetails, null, 4));
-                if (chatdetails.length) {
-                    return res.json({ success: 1, status: 1, chatdata: chatdetails });
-                } else {
-                    return res.json({ success: 1, status: 1, chatdata: {msg: 'No previous chat is there!'} });
-                }
-            });
-        
+        console.log(data);
+        loggedinUser = data.senderUser;
+        receiverUser = data.receiverUser;
     }
 };
