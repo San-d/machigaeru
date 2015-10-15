@@ -80,7 +80,7 @@ angular.module('machigaeru').controller('ChatController', ['$scope', '$http','$r
             if(resData.chatdata[0]) {
                 $scope.chatList = resData.chatdata[0].chatArray;
                 console.log("cas "+JSON.stringify($scope.chatList, null, 4));
-            }
+            }chat/setconversation
         });
 
         $http.get('/chat/savechatdata', function (resData) {
